@@ -1,0 +1,54 @@
+<script>if(void 0===window.Persistence){var e="github.com/SimonLammer/anki-persistence/",t="_default";if(window.Persistence_sessionStorage=function(){var i=!1;try{"object"==typeof window.sessionStorage&&(i=!0,this.clear=function(){for(var t=0;t<sessionStorage.length;t++){var i=sessionStorage.key(t);0==i.indexOf(e)&&(sessionStorage.removeItem(i),t--)}},this.setItem=function(i,n){void 0==n&&(n=i,i=t),sessionStorage.setItem(e+i,JSON.stringify(n))},this.getItem=function(i){return void 0==i&&(i=t),JSON.parse(sessionStorage.getItem(e+i))},this.removeItem=function(i){void 0==i&&(i=t),sessionStorage.removeItem(e+i)},this.getAllKeys=function(){for(var t=[],i=Object.keys(sessionStorage),n=0;n<i.length;n++){var s=i[n];0==s.indexOf(e)&&t.push(s.substring(e.length,s.length))}return t.sort()})}catch(n){}this.isAvailable=function(){return i}},window.Persistence_windowKey=function(i){var n=window[i],s=!1;"object"==typeof n&&(s=!0,this.clear=function(){n[e]={}},this.setItem=function(i,s){void 0==s&&(s=i,i=t),n[e][i]=s},this.getItem=function(i){return void 0==i&&(i=t),void 0==n[e][i]?null:n[e][i]},this.removeItem=function(i){void 0==i&&(i=t),delete n[e][i]},this.getAllKeys=function(){return Object.keys(n[e])},void 0==n[e]&&this.clear()),this.isAvailable=function(){return s}},window.Persistence=new Persistence_sessionStorage,Persistence.isAvailable()||(window.Persistence=new Persistence_windowKey("py")),!Persistence.isAvailable()){var i=window.location.toString().indexOf("title"),n=window.location.toString().indexOf("main",i);i>0&&n>0&&n-i<10&&(window.Persistence=new Persistence_windowKey("qt"))}}</script>
+
+
+<p>{{Question}}</p>
+{{#Option 1}}
+	<p id="p_1" class="shuffle"><input type="checkbox" class="cb" aria-label="{{Option 1}}" id="option_1"><span class="option" id="span_1">{{Option 1}}</span></p>
+{{/Option 1}}
+{{#Option 2}}
+	<p id="p_2" class="shuffle"><input type="checkbox" class="cb" aria-label="{{Option 2}}" id="option_2"><span class="option" id="span_2">{{Option 2}}</span></p>
+{{/Option 2}}
+{{#Option 3}}
+	<p id="p_3" class="shuffle"><input type="checkbox" class="cb" aria-label="{{Option 3}}" id="option_3"><span class="option" id="span_3">{{Option 3}}</span></p>
+{{/Option 3}}
+{{#Option 4}}
+	<p id="p_4" class="shuffle"><input type="checkbox" class="cb" aria-label="{{Option 4}}" id="option_4"><span class="option" id="span_4">{{Option 4}}</span></p>
+{{/Option 4}}
+{{#Option 5}}
+	<p id="p_5" class="shuffle"><input type="checkbox" class="cb" aria-label="{{Option 5}}" id="option_5"><span class="option" id="span_5">{{Option 5}}</span></p>
+{{/Option 5}}
+{{#Option 6}}
+	<p id="p_6" class="shuffle"><input type="checkbox" class="cb" aria-label="{{Option 6}}" id="option_6"><span class="option" id="span_6">{{Option 6}}</span></p>
+{{/Option 6}}
+{{#Option 7}}
+	<p id="p_7" class="shuffle"><input type="checkbox" class="cb" aria-label="{{Option 7}}" id="option_7"><span class="option" id="span_7">{{Option 7}}</span></p>
+{{/Option 7}}
+{{#Option 8}}
+	<p id="p_8" class="shuffle"><input type="checkbox" class="cb" aria-label="{{Option 8}}" id="option_8"><span class="option" id="span_8">{{Option 8}}</span></p>
+{{/Option 8}}
+{{#Option 9}}
+	<p id="p_9" class="shuffle"><input type="checkbox" class="cb" aria-label="{{Option 9}}" id="option_9"><span class="option" id="span_9">{{Option 9}}</span></p>
+{{/Option 9}}
+
+<span hidden id="answer">{{Answer Index}}</span>
+
+<script>
+    if (Persistence.isAvailable()){
+        const cbs = document.querySelectorAll(".cb");
+        const lbls = document.querySelectorAll(".option");
+        const answer = document.querySelector("#answer").textContent.replace(",","").replace(" ","");
+        
+        cbs.forEach(cb => {
+            if (Persistence.getItem(cb.id))
+                cb.checked = true;
+        });
+        for (let i = 0; i < lbls.length; i++) {
+            const span = lbls[i];
+            if (answer.includes(i+1+''))
+                span.style.background = "limegreen";
+        }
+
+        Persistence.getItem("order").split(",").forEach((fld) => 
+            document.querySelector("body").appendChild(document.querySelector(`#${fld}`)));
+    }
+</script>

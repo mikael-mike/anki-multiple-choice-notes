@@ -4,6 +4,7 @@
 ---
 
 Have multiple choice flashcards with up to 9 options, extremely simplistic, only checkbox and text.
+
 *To be used with Anki*
 
 ---
@@ -16,6 +17,7 @@ Have multiple choice flashcards with up to 9 options, extremely simplistic, only
   1. One field named `Question`
   2. 9 fields named `Option 1` through `Option 9`
   3. One field named `Answer Index`
+
 The name of the fields are case sensitive and will be referenced in the code.
 
 ### Usage

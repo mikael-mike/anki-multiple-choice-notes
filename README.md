@@ -22,14 +22,14 @@ The name of the fields are case sensitive and will be referenced in the code.
 
 ### Usage
 
-1. Add a flashcard and switch the note type to the added type
-2. Fill in `Questions` and `Options 1-9`. If you don't need the extra options, leave them blank
+1. Add a flashcard and switch the note type to the added type.
+2. Fill in `Questions` and `Options 1-9`. If you don't need the extra options, leave them blank.
 3. In `Answer Index`, type the trailing number of the correct options without any separation. For example, if `Option 1`, `Option 3`, and `Option 4` are correct, input `134`.
 
 ---
 
 ### Note
 
-Tested and works on the Anki app for Windows and AnkiDroid
+Tested on the Anki app for Windows and AnkiDroid.
 
 To persist choice between both sides of the card, [anki-persistence](https://github.com/SimonLammer/anki-persistence) is used.

@@ -29,3 +29,5 @@ The name of the fields are case sensitive and will be referenced in the code.
 ### Note
 
 Tested and works on the Anki app for Windows and AnkiDroid
+
+To persist choice between both sides of the card, [anki-persistence](https://github.com/SimonLammer/anki-persistence) is used.
